@@ -109,4 +109,5 @@ describe("Customer repository test", () => {
     expect(customers).toContainEqual(customer1);
     expect(customers).toContainEqual(customer2);
   });
+
 });
