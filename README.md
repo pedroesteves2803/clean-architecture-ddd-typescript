@@ -1,15 +1,4 @@
-# Desafio Full Cycle - Métodos de OrderRepository
-
-Este desafio, parte do Curso Full Cycle, tem como objetivo terminar de implementar totalmente os metodos definidos pelo 
-OrderRepositoryInterface
-
-## 📝 Instruções
-
-Nesse desafio você deverá fazer com que a classe OrderRepository implemente totalmente os métodos definidos pelo OrderRepositoryInterface. Toda essa implementação deverá ser reproduzida através de testes.
-
-Após realizar tal implementação submeta seu projeto, nesse ponto todos os testes devem estar passando.
-
-Boa sorte.
+## 📝 Informações
 
 * A linguagem de programação para este desafio é TypeScript
 
