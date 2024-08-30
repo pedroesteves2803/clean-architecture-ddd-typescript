@@ -1,34 +1,42 @@
+import Entity from "../../@shared/entity/entity.abstract";
+import NotificationError from "../../@shared/notification/notification.error";
 import Address from "../value-object/adress";
 
-export default class Customer {
+export default class Customer extends Entity {
 
-    private _id:string;
-    private _name:string;
+    private _name: string;
     private _address!: Address;
     private _active: boolean = false;
     private _rewardPoints: number = 0;
 
-    constructor(id:string, name:string){
+    constructor(id: string, name: string) {
+        super();
         this._id = id;
         this._name = name;
         this.validate();
+
+        if (this.notification.hasErrors()) {
+            throw new NotificationError(this.notification.getErrors());
+        }
     }
 
     validate() {
-        if(this._id.length === 0){
-            throw new Error("Id is required");
+        if (this._id.length === 0) {
+            this.notification.addError({
+                context: "customer",
+                message: "Id is required"
+            });
         }
 
-        if(this._name.length === 0){
-            throw new Error("Name is required");
+        if (this._name.length === 0) {
+            this.notification.addError({
+                context: "customer",
+                message: "Name is required"
+            });
         }
     }
 
-    get id() {
-        return this._id;
-    }
-
-    get name(): string { 
+    get name(): string {
         return this._name;
     }
 
@@ -36,7 +44,7 @@ export default class Customer {
         return this._rewardPoints;
     }
 
-    changeName(name:string){
+    changeName(name: string) {
         this._name = name;
         this.validate();
     }
@@ -44,24 +52,24 @@ export default class Customer {
     get Address(): Address {
         return this._address;
     }
-      
-    changeAddress(address: Address){
+
+    changeAddress(address: Address) {
         this._address = address;
     }
 
     isActive(): boolean {
         return this._active;
     }
-    
-    activate(){
-        if(this._address === undefined){
+
+    activate() {
+        if (this._address === undefined) {
             throw new Error("Address is mandatory to activate a customer");
         }
 
         this._active = true;
     }
 
-    deactivate(){
+    deactivate() {
         this._active = false;
     }
 
